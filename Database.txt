@@ -1,0 +1,25 @@
+Server: 192.168.254.200
+
+yum update
+
+
+yum install wget -y
+wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+rpm -Uvh mysql80-community-release-el7-3.noarch.rpm
+
+
+yum install mysql-server
+systemctl start mysqld
+systemctl enable mysqld
+
+firewall-cmd --permanent --zone=public --add-service=mysql
+firewall-cmd --reload
+
+#To see temporary password
+grep 'temporary password' /var/log/mysqld.log - jdn1c4kNQb)3
+
+mysql_secure_installation
+password: Tvtx223!
+
+192.168.254.186 - IP of PHP server
+CREATE USER 'TvTx'@'192.168.254.186' IDENTIFIED WITH mysql_native_password BY 'TVtx223!';
