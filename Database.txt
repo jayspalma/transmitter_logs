@@ -76,3 +76,18 @@ VALUES
 ##This is for WAMP configuration only##
 CREATE USER 'txloguser'@'localhost' IDENTIFIED BY 'tvtx223';
 GRANT ALL ON transmitter.* TO 'txloguser'@'localhost';
+
+
+#Table for users#
+CREATE TABLE users (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+admin BOOLEAN NOT NULL
+);
+
+INSERT INTO users
+(id,username,password,admin)
+VALUES
+('','jays','$2y$10$LSt5VN8qZsU5Tnuj5nLxNeyr0C.JA6IGQgU9Ne2IbDSYfrToksfty',true);
+
