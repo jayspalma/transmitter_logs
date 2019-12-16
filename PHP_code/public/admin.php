@@ -1,7 +1,7 @@
 <?php
 require_once("../includes/functions.php");
   
-session_start();
+
 $username = $_SESSION['username'];
 $admin = $_SESSION['admin'];
 

@@ -1,17 +1,21 @@
 <?php
 require_once("../includes/functions.php");
-session_start();
-$db = new mysqli("localhost","txloguser","tvtx223","transmitter");
+require_once("../includes/config.php");
 ?>
 
+<?php
+if($db->connect_error){
+	die("Connection Failed: " . $db->connect_error);
+}else{
 
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login</title>
 </head>
-<body>
+
 
 
 
@@ -29,8 +33,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	$postpassword = $_POST["password"];
 	$sql = "SELECT * FROM users WHERE username='$username'";
 
-
-
+	#$db is instantiated on config.php file#
 	$result = $db->query($sql);
 	$row = $result->fetch_assoc();
 
@@ -43,14 +46,10 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 		}else{
 			echo "Username/Password does not exists!!!";
 		}
-
-
 	}else{
 
 		echo "Username/Password does not exists!!!";
 	}
-
-
 
 	$result->free();
 }else{
@@ -62,7 +61,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
 ?>
 
-<br />
+
+
 
 <?php 
 
@@ -71,16 +71,13 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 //$password = password_hash("password", PASSWORD_DEFAULT);
 //echo $password;
 
-
-
-
-
 ?>
 
 
 
 
-</body>
+
 </html>
 
 
+<?php }//closing bracket of else for checking $db connection. ?>

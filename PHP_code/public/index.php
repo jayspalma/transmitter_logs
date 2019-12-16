@@ -8,31 +8,28 @@ require_once("../includes/functions.php");
 </head>
 <body>
 <?php
-session_start();
+
 $username = $_SESSION['username'];
 $admin = $_SESSION['admin'];
 ?>
 
-<?php if(isset($username) && ($admin)){ ?>
-	Welcome Admin <?php echo " $username";?>
-	<br/>
-	<br/>
-	<a href="admin.php">Admin</a>
-	<h1>This is the index page. This is for viewing discrepancies</h1>
-    <a href="logout.php">Logout</a>
-
-<?php }elseif (isset($username)) { ?>
-	Welcome  <?php echo " $username";?>
-	<br/>
-	<br/>
-	<h1>This is the index page. This is for viewing discrepancies</h1>
-    <a href="logout.php">Logout</a>
-
-<?php }else{
+<?php 
+if(isset($username) && ($admin)){ 
+	echo "Welcome Admin " . $username;
+	echo '<br/>';
+	echo '<a href="admin.php">Admin</a>';
+}elseif (isset($username)) { 
+	echo "Welcome " . $username;
+}else{
 	redirect_to('login.php');
 }
 
 ?>
+
+	<br/>
+	<br/>
+	<h1>This is the index page. This is for viewing discrepancies</h1>
+    <a href="logout.php">Logout</a>
 
 
 
