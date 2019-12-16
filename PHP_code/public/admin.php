@@ -5,8 +5,6 @@ session_start();
 $username = $_SESSION['username'];
 $admin = $_SESSION['admin'];
 
-echo $username;
-echo $admin;
 
 if(!($admin)){
 	redirect_to('login.php');

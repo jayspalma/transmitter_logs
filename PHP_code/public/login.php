@@ -23,7 +23,6 @@ $db = new mysqli("localhost","txloguser","tvtx223","transmitter");
 
 <?php
 
-// $username = $_POST["username"];
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
 	$username = $_POST["username"];
@@ -37,9 +36,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
 	if($row){
 		$dbpassword = $row['password'];
-		//$id = $row['id'];
-
-
 		 if(password_verify($postpassword, $dbpassword)){
 		 	$_SESSION['username'] =  $username;
 		 	$_SESSION['admin'] = $row['admin'];
