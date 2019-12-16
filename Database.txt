@@ -87,7 +87,12 @@ admin BOOLEAN NOT NULL
 );
 
 INSERT INTO users
-(id,username,password,admin)
+(username,password,admin)
 VALUES
-('','jays','$2y$10$LSt5VN8qZsU5Tnuj5nLxNeyr0C.JA6IGQgU9Ne2IbDSYfrToksfty',true);
+(jays','$2y$10$LSt5VN8qZsU5Tnuj5nLxNeyr0C.JA6IGQgU9Ne2IbDSYfrToksfty',true);
+
+INSERT INTO users
+(username,password,admin)
+VALUES
+('manila2','$2y$10$G64otvCGRYE32k2b/ptoyerwrhb.qkZIzmpPCv167BZ6MZ9q49w8G',false);
 
