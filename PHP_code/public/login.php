@@ -22,7 +22,7 @@ $db = new mysqli("localhost","txloguser","tvtx223","transmitter");
 </form>
 
 <?php
-// $username = "";
+
 // $username = $_POST["username"];
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
@@ -41,7 +41,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
 
 		 if(password_verify($postpassword, $dbpassword)){
-		 	$_SESSION['admin_id'] =  $row['id'];
+		 	$_SESSION['username'] =  $username;
+		 	$_SESSION['admin'] = $row['admin'];
 			redirect_to('index.php');
 		}else{
 			echo "Username/Password does not exists!!!";
@@ -69,52 +70,12 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
 <?php 
 
-// $password = password_hash("password", PASSWORD_DEFAULT);
-// echo $password;
+#This is used to make hashed and salted password. Add this to the sign-up page.
 
-// if(password_verify("password", $password)){
-// 	echo "Password match";
-// }
+//$password = password_hash("password", PASSWORD_DEFAULT);
+//echo $password;
 
 
-
-
-//$db = new Database();
-
-// $sql = "SELECT * FROM users WHERE username='jays'";
-
-
-// $result = $db->query($sql);
-// $row = $result->fetch_assoc();
-
-// if($row){
-// 	$dbpassword = $row['password'];
-// 	$postpassword = "password";
-
-// 	 if(password_verify($postpassword, $dbpassword)){
-// 		echo "Success";
-// 	}else{
-// 		echo "Username/Password does not exists!!!";
-// 	}
-
-
-// }else{
-
-// 	echo "Username/Password does not exists!!!";
-// }
-
-
-
-// $result->free();
-
-// $dbpassword = $row['password'];
-// $postpassword = "password";
-
-// if(password_verify($postpassword, $dbpassword)){
-//  echo "Success";
-// }else{
-//  echo "Username/Password does not exists!!!";
-// }
 
 
 
