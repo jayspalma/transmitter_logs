@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+-- MariaDB dump 10.17  Distrib 10.4.10-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: transmitter
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version	10.4.10-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -30,7 +30,7 @@ CREATE TABLE `txlogs` (
   `TIME_START` datetime DEFAULT NULL,
   `TIME_END` datetime DEFAULT NULL,
   `DURATION` time DEFAULT NULL,
-  `DESCRIPTION` longtext,
+  `DESCRIPTION` longtext DEFAULT NULL,
   `TX_STATUS` char(255) DEFAULT NULL,
   `POWER_SOURCE` char(255) DEFAULT NULL,
   `DUTY_OE` char(255) DEFAULT NULL
@@ -87,7 +87,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'jays','$2y$10$LSt5VN8qZsU5Tnuj5nLxNeyr0C.JA6IGQgU9Ne2IbDSYfrToksfty',1);
+INSERT INTO `users` VALUES (1,'jays','$2y$10$LSt5VN8qZsU5Tnuj5nLxNeyr0C.JA6IGQgU9Ne2IbDSYfrToksfty',1),(2,'manila2','$2y$10$G64otvCGRYE32k2b/ptoyerwrhb.qkZIzmpPCv167BZ6MZ9q49w8G',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-14 15:54:41
+-- Dump completed on 2019-12-16 19:28:03
