@@ -3,21 +3,11 @@ require_once("../includes/functions.php");
 require_once("../includes/config.php");
 ?>
 
-<?php
-if($db->connect_error){
-	die("Connection Failed: " . $db->connect_error);
-}else{
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login</title>
 </head>
-
-
-
 
 <form action="login.php" method="post">
 <input type="text" name="username" placeholder="Username" required>
@@ -27,15 +17,16 @@ if($db->connect_error){
 
 <?php
 
-
 if(isset($_POST["username"]) && isset($_POST["password"])){
 	$username = $_POST["username"];
 	$postpassword = $_POST["password"];
 	$sql = "SELECT * FROM users WHERE username='$username'";
 
 	#$db is instantiated on config.php file#
-	$result = $db->query($sql);
-	$row = $result->fetch_assoc();
+	#Instantiate one row using fetch()
+	$query = $db->prepare($sql);
+	$query->execute();
+	$row = $query->fetch();
 
 	if($row){
 		$dbpassword = $row['password'];
@@ -51,14 +42,11 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 		echo "Username/Password does not exists!!!";
 	}
 
-	$result->free();
+	$row = null;
 }else{
 	$username = "";
 	$postpassword = "";
 }
-
-
-
 ?>
 
 
@@ -73,11 +61,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 
 ?>
 
-
-
-
-
 </html>
 
 
-<?php }//closing bracket of else for checking $db connection. ?>
