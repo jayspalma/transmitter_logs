@@ -1,6 +1,7 @@
 <?php  
 require_once("../includes/functions.php");  
-require_once("../includes/config.php");        
+require_once("../includes/config.php");
+include("javascripts/scripts.php");         
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,23 +38,32 @@ if(isset($username) && ($admin)){
 
 
 <p>
+
+<form action="index.php" method="post" id="searchform">
 Select Site
-<form action="index.php" method="post">
 <select name="SITE_CODE" >
   <option value="">Select...</option>
   <option value="All">All Sites</option>
   <option value="MLA_2">Manila 2</option>
   <option value="MLA_23">Manila 23</option>
 </select>
-
+Select Class
 <select name="CLASS" >
   <option value="">Select...</option>
   <option value="All">All </option>
   <option value="FYI">FYI</option>
   <option value="NPO">NPO</option>
 </select>
+
+ Start Date: <input id="datepickerstart" readonly="readonly" name="datepickerstart">
+
+ End Date: <input id="datepickerend" readonly="readonly" name="datepickerend">
+
+
 <input type="submit" value="Submit">
+
 </form>
+<div class="error-messages" style="display:none;"></div>
 </p>
 
 <?php 
@@ -102,13 +112,4 @@ $row = null;
 
 
 <!-- //#Working datepicker
-// --> <!--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-//   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-//   <script>
-//   $( function() {
-//     $( "#datepicker" ).datepicker();
-//   } );
-//   </script>
-
-//   <p>Date: <input type="text" id="datepicker"></p>
-//  -->
+c
