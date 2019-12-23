@@ -73,6 +73,12 @@ INSERT INTO txlogs
 VALUES
 ('2019-06-04','MLA_23','NPO','BROADOUT',NOW(),NOW(),'','LASD','COMM','SADAS','SDJSAaDJ');
 
+#Inserting data by using csv file.
+LOAD DATA LOCAL INFILE "C:\\records.csv"
+INTO TABLE txlogs FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(DATE,SITE_CODE,CLASS,REPORT_STATUS,TIME_START,TIME_END,DURATION,DESCRIPTION,TX_STATUS,POWER_SOURCE,DUTY_OE)
+
 ##This is for WAMP configuration only##
 CREATE USER 'txloguser'@'localhost' IDENTIFIED BY 'tvtx223';
 GRANT ALL ON transmitter.* TO 'txloguser'@'localhost';
