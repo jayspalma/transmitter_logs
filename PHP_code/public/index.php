@@ -68,13 +68,22 @@ Select Class
 
 <?php 
 
+//These are $_POST variables
+$post_names = array('DATE','SITE_CODE','CLASS');
 
-$column_name = array('DATE','SITE_CODE','CLASS');
-$sql = sql_buider($column_name);
-$query = $db->prepare($sql);
-$query->execute();
-$row = $query->fetchAll();
+//Get values of date range
+$datepickerstart = $_POST['datepickerstart'];
+$datepickerend = $_POST['datepickerend'];
 
+//Build the sqk string to be used by data_query and result_count functions
+$sql = sql_buider($post_names,$datepickerstart,$datepickerend);
+
+//Query the database for data by using the sql string from sql_builder function.
+$row = data_query($sql);
+
+if(empty($row)){
+	echo "No Record Found";
+}else{
 
 ?>
 
@@ -100,16 +109,13 @@ table, th, td {
 echo "</table>
 </html>";
 
+$result_count = result_count($sql);
+echo $result_count . " record/s found." ;
+
+//free database results
+$result_count = null;
 $row = null;
+
+
+}
 ?>
-
-
-<!-- TO DO TASK -->
-<!-- DATEPICKER -->
-<!-- No Results Found still not working if no values are resturned from query -->
-<!-- Table formatting -->
-
-
-
-<!-- //#Working datepicker
-c

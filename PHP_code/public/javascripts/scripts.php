@@ -20,6 +20,7 @@
 
   $(document).ready(function(){
     $("#datepickerstart").datepicker({
+      dateFormat: 'yy-mm-dd',
       changeMonth: true,
       changeYear: true,
       showOn: "button",
@@ -28,6 +29,7 @@
       buttonText: "Select Date"
     });
     $("#datepickerend").datepicker({
+      dateFormat: 'yy-mm-dd',
       changeMonth: true,
       changeYear: true,
       showOn: "button",
