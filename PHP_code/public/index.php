@@ -72,11 +72,17 @@ Select Class
 $post_names = array('DATE','SITE_CODE','CLASS');
 
 //Get values of date range
+if(!isset($_POST['datepickerstart']) && !isset($_POST['datepickerend'])){
+	$datepickerstart = "";
+	$datepickerend = "";
+}else{
 $datepickerstart = $_POST['datepickerstart'];
 $datepickerend = $_POST['datepickerend'];
+}
 
 //Build the sqk string to be used by data_query and result_count functions
 $sql = sql_buider($post_names,$datepickerstart,$datepickerend);
+
 
 //Query the database for data by using the sql string from sql_builder function.
 $row = data_query($sql);
